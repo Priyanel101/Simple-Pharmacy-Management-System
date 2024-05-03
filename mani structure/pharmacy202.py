@@ -11,7 +11,7 @@ def pharmacy_menu():
     Returns:
         bool: True if the user wants to continue, False if the user wants to quit.
     """
-    print("Good day pharmacy staff member!!\n")
+    print("\n\n\nGood day pharmacy staff member!!\n")
     print("╔════════════════════════╗")
     print("║       Pharmacy         ║")
     print("║          ✚             ║")
@@ -66,6 +66,30 @@ def update_inventory():
     else:
         print("Medicine not found!")
 
+def medicine_informations():
+    """
+    Displays the pharmacy choices menu and handles user input.
+    """
+    while True:
+        print("\n1. View Inventory")
+        print("2. View Medicine Information")
+        print("3. Update Inventory")
+        print("4. Quit")
+
+        menu_choice = input("Enter your choice: ")
+
+        if menu_choice == "2":
+            print("\n\n\nAvailable Medicines:\n\n")
+            for medicine in medicine_info.keys():
+                print(medicine)
+
+            chosen_medicine = input("\n\nEnter the name of the medicine for information: ")
+            if chosen_medicine in medicine_info:
+                print(f"\nInformation about {chosen_medicine}:")
+                print(medicine_info[chosen_medicine])
+            else:
+                print("Medicine not found.")
+
 def pharmacy_choices():
     """
     Displays the pharmacy choices menu and handles user input.
@@ -81,9 +105,7 @@ def pharmacy_choices():
         if menu_choice == "1":
             view_inventory()
         elif menu_choice == "2":
-            print("\nMedicine Information:")
-            for medicine, info in medicine_info.items():
-                print(f"{medicine}: {info}")
+            medicine_informations()
         elif menu_choice == "3":
             update_inventory()
         elif menu_choice == "4":
